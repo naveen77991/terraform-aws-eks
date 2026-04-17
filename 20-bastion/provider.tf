@@ -7,11 +7,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "latest-84s-remote-state-dev"
+    bucket = "s3bucketpolicytest-6792"
     key    = "roboshop-dev-bastion"
     region = "us-east-1"
     encrypt        = true
-    use_lockfile = true
+    
   }
 }
 
