@@ -3,32 +3,48 @@ pipeline {
         label 'catalogue'
     }
 
+    environment {
+        REGION = "us-east-1"
+    }
+
     stages {
 
         stage('Terraform Init') {
             steps {
-                sh '''
-                cd 90-vpc-peering
-                terraform init
-                '''
+                script {
+                    withAWS(credentials: 'aws-creds', region: REGION) {
+                        sh '''
+                        cd 90-vpc-peering
+                        terraform init
+                        '''
+                    }
+                }
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                sh '''
-                cd 90-vpc-peering
-                terraform plan
-                '''
+                script {
+                    withAWS(credentials: 'aws-creds', region: REGION) {
+                        sh '''
+                        cd 90-vpc-peering
+                        terraform plan
+                        '''
+                    }
+                }
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                sh '''
-                cd 90-vpc-peering
-                terraform apply -auto-approve
-                '''
+                script {
+                    withAWS(credentials: 'aws-creds', region: REGION) {
+                        sh '''
+                        cd 90-vpc-peering
+                        terraform apply -auto-approve
+                        '''
+                    }
+                }
             }
         }
     }
