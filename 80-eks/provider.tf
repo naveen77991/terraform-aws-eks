@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "439481669447"
+    bucket = "s3bucketpolicytest-6792"
     key    = "roboshop-dev-eks"
     region = "us-east-1"
    
