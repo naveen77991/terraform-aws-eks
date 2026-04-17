@@ -7,9 +7,9 @@ variable "environment" {
 }
 
 variable "zone_id" {
-    default = "Z032558618100M4EJX8X4"
+    default = "Z02118632WLZN97K61B19"
 }
 
 variable "zone_name" {
-    default = "daws84s.site"
+    default = "daws-84job.sbs"
 }
